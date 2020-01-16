@@ -1,5 +1,8 @@
 /*global Backbone, jQuery, _, ENTER_KEY, ESC_KEY */
 import _ from 'underscore';
+import Item from './../new/Item'
+import React from 'react'
+import ReactDom from 'react-dom'
 
 var app = window.app || {};
 
@@ -15,7 +18,6 @@ var app = window.app || {};
 		tagName:  'li',
 
 		// Cache the template function for a single item.
-		template: _.template($('#item-template').html()),
 
 		// The DOM events specific to an item.
 		events: {
@@ -50,7 +52,8 @@ var app = window.app || {};
 				return;
 			}
 
-			this.$el.html(this.template(this.model.toJSON()));
+			ReactDom.render(<Item completed={this.model.attributes.completed} title={this.model.attributes.title} />, this.$el[0])
+
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();
 			this.$input = this.$('.edit');

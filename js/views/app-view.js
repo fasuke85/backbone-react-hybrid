@@ -1,5 +1,8 @@
 /*global Backbone, jQuery, _, ENTER_KEY */
 import _ from 'underscore';
+import React from 'react'
+import ReactDom from 'react-dom'
+import Stats from './../new/Stats'
 
 var app = window.app || {};
 
@@ -12,9 +15,6 @@ const AppView = Backbone.View.extend({
 	// Instead of generating a new element, bind to the existing skeleton of
 	// the App already present in the HTML.
 	el: '.todoapp',
-
-	// Our template for the line of statistics at the bottom of the app.
-	statsTemplate: _.template($('#stats-template').html()),
 
 	// Delegated events for creating new items, and clearing completed ones.
 	events: {
@@ -55,10 +55,7 @@ const AppView = Backbone.View.extend({
 			this.$main.show();
 			this.$footer.show();
 
-			this.$footer.html(this.statsTemplate({
-				completed: completed,
-				remaining: remaining
-			}));
+			ReactDom.render(<Stats completed={completed} remaining={remaining} />, this.$footer[0])
 
 			this.$('.filters li a')
 				.removeClass('selected')

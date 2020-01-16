@@ -1,5 +1,5 @@
 /*global Backbone */
-var app = winodw.app || {};
+var app = window.app || {};
 
 (function () {
 	'use strict';
