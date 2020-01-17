@@ -1,6 +1,11 @@
 {
   "private": true,
+  "scripts": {
+    "start": "http-server & parcel --port 1111 js/app.js"
+  },
   "dependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
     "backbone": "^1.1.2",
     "backbone.localstorage": "^1.1.16",
     "http-server": "^0.12.1",
@@ -10,5 +15,8 @@
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.1",
     "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5"
   }
 }
